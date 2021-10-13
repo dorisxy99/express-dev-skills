@@ -4,7 +4,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: blue;
 }
 
 
@@ -14,7 +14,7 @@ a {
 }
 
 .delete-form button {
-  color: red;
+  color: green;
 }
 
 li {

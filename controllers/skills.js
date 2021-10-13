@@ -7,10 +7,12 @@ module.exports = {
     create,
     delete: deleteSkill,
     edit,
-    update
+    update,
+    showUpdate
 };
 
 function update(req, res) {
+    console.log(req.body);
     req.body.mastered = !!req.body.mastered;
     Skill.update(req.params.id, req.body);
     res.redirect(`/skills/${req.params.id}`);
@@ -29,7 +31,6 @@ function deleteSkill(req, res) {
 function create(req, res) {
     // req.body contains the data submitted
     // in the form
-    console.log(req.body);
     Skill.create(req.body);
     res.redirect('/skills');
 }
@@ -41,6 +42,11 @@ function newSkill(req, res) {
 function show(req, res) {
     const skill = Skill.getOne(req.params.id);
     res.render('skills/show', { skill });
+}
+
+function showUpdate(req, res) {
+    const skill = Skill.getOne(req.params.id);
+    res.render('skills/update', { skill });
 }
 
 function index(req, res) {

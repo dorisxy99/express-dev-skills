@@ -1,20 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const skillsCtrl = require('../controllers/skills');
 
-/* GET REQUESTS TO RENDER PAGES */
+const skillsCtrl = require('../controllers/skills')
+
+/* GET users listing. */
 router.get('/', skillsCtrl.index);
-router.get('/new', skillsCtrl.new);
+
+router.get('/edit/:id', skillsCtrl.edit);
+
 router.get('/:id', skillsCtrl.show);
-router.get('/update/:id', skillsCtrl.showUpdate);
 
-/* POST CRUD API*/
-router.post('/create', skillsCtrl.create);
-router.post('/update/:id', skillsCtrl.update);
-router.post('/delete/:id', skillsCtrl.delete);
+router.post('/', skillsCtrl.create)
 
+router.put('/:id', skillsCtrl.update);
 
-// router.delete('/:id', skillsCtrl.delete);
-router.get('/:id/edit', skillsCtrl.edit);
+router.delete('/:id', skillsCtrl.delete)
 
 module.exports = router;

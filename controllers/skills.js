@@ -11,12 +11,16 @@ module.exports = {
     showUpdate
 };
 
-function update(req, res) {
-    console.log(req.body);
-    req.body.mastered = !!req.body.mastered;
-    Skill.update(req.params.id, req.body);
-    res.redirect(`/skills/${req.params.id}`);
+function index(req, res) {
+    const skills = Skill.getAll();
+    res.render('skills/index', {skills});
 }
+
+function show(req, res) {
+    const skill = Skill.getOne(req.params.id);
+    res.render('skills/show', { skill });
+}
+
 
 function edit(req,res) {
     const skill = Skill.getOne(req.params.id);
@@ -37,11 +41,13 @@ function create(req, res) {
 
 function newSkill(req, res) {
     res.render('skills/new');
-  }
+}
 
-function show(req, res) {
-    const skill = Skill.getOne(req.params.id);
-    res.render('skills/show', { skill });
+function update(req, res) {
+    //console.log(req.body);
+    req.body.mastered = !!req.body.mastered;
+    Skill.update(req.params.id, req.body);
+    res.redirect(`/skills/${req.params.id}`);
 }
 
 function showUpdate(req, res) {
@@ -49,7 +55,3 @@ function showUpdate(req, res) {
     res.render('skills/update', { skill });
 }
 
-function index(req, res) {
-    const skills = Skill.getAll();
-    res.render('skills/index', {skills});
-}

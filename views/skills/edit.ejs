@@ -2,7 +2,7 @@
 
 <h1>Skill #<%= skill.id %></h1>
 <!-- the action attr defines the path of the HTTP request -->
-<form action="/skills/update/<%= skill.id %>" method="POST">
+<form action="/skills/<%= skill.id %>?_method=PUT" method="POST">
     <!-- the name attr determines the name of the property on req.body -->
     <input value="<%= skill.mastered%>" <%= skill.mastered ? "checked" : "" %>  type="checkbox" name="mastered">
     <input value="<%= skill.skill %>" type="text" name="skill">

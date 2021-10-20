@@ -20,14 +20,16 @@ const skills = [
 
   function update(id, updatedSkill) {
     id = parseInt(id);
+    //skills = skills.map( skill => skill.id === id ? { ...skill, ...payload }:skill )
     const skill = skills.find(skill => skill.id === id);
     Object.assign(skill, updatedSkill);
   }
 
 function deleteOne(id) {
-    id = parseInt(id);
-    const idx = skills.findIndex(skill => skill.id === id);
-    skills.splice(idx, 1);
+    //const idx = skills.findIndex(skill => skill.id === id);
+    //skills.splice(idx, 1);
+      id = parseInt(id)
+      skills = skills.filter( skill => skill.id !== id)
   }
 
 function create(skill) {
